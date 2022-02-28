@@ -1,0 +1,23 @@
+version: "2"
+
+services:
+  cmstock_golang:
+    container_name: cmstock_golang
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081"
+    environment:
+      GORM_URL: "root:root@tcp(192.168.200.31:3306)/root?charset=utf8mb4&parseTime=True&loc=Local"
+      JWT_SECRET: "123456"
+      PORT: "8081"
+      GIN_MODE: release
+      PROD: TURE
+
+# ENV GIN_MODE=release
+# ENV PROD=TURE
+# ENV GORM_URL="root:root@tcp(192.168.200.31:3306)/root?charset=utf8mb4&parseTime=True&loc=Local"
+# ENV JWT_SECRET="123456"
+# ENV PORT="8081"
+
